@@ -1,0 +1,7 @@
+#!/bin/bash
+
+LOGNAME=$(whoami)
+HOME=($(ls -l | wc -l) $(ps -u $LOGNAME | wc -l))
+
+echo "${HOME[0]} files in home directory"
+echo "${HOME[1]} running processes of user $LOGNAME"

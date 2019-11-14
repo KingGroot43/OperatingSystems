@@ -1,0 +1,5 @@
+#!/bin/bash
+
+filename=$(date +%A)passwd
+touch $filename
+cut -d ':' -f 1 /etc/passwd | sort -k 1 > $filename

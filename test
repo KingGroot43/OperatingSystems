@@ -1,0 +1,3 @@
+#! /bin/bash
+dayofweek=$(date +%A)
+echo "Today is $dayofweek"

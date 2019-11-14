@@ -1,0 +1,20 @@
+#!/bin/bash
+
+case "$1" in
+	-[lL]) who ;;
+	-[sS]) 
+		if [ $(who | cut -d ' ' -f 1) == $2 ]
+		then
+			echo "User $2 exists!"
+			exit 0
+		fi
+		echo "User $2 doesn't exist!"
+		exit 1
+	;;
+	--help) 
+		echo "prints all currently known users in the system"
+		echo "-l -> shows current logged in users"
+		echo "-s -> expects an argument and checks if the user exists"
+	;;
+	*) cut -d ':' -f 1 /etc/passwd
+esac

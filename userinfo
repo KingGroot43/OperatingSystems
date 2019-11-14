@@ -1,0 +1,8 @@
+#! /bin/bash
+
+echo "I am ..."
+whoami
+echo "Today is ..."
+date +%A
+var=$0
+echo $var

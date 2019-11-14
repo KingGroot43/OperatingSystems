@@ -1,0 +1,7 @@
+#!/bin/bash
+
+case "$1" in
+	-[hH]|-help) echo "Help";;
+	-[tT]|-test) echo "Test";;
+	*) echo "Wrong option $1"
+esac

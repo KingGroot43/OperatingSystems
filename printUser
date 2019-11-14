@@ -1,0 +1,11 @@
+#!/bin/bash
+
+arg=$1
+array=$(grep $arg /etc/passwd | cut -d ':' -f 1)
+
+if [ array == $arg ]
+then
+	echo $?
+else
+	echo $?
+fi

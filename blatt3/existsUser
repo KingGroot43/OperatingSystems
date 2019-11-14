@@ -1,0 +1,15 @@
+#!/bin/bash
+
+S=$1
+
+while read line
+do
+	user=$(echo $line | cut -d ':' -f 1)
+	if [ $user == $S ]
+		then
+			echo $user
+			exit 0
+	fi
+done < /etc/passwd
+
+exit 1

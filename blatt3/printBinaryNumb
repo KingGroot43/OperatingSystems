@@ -1,0 +1,5 @@
+#!/bin/bash
+
+numb=$1
+
+echo "obase=2; $numb" | bc
