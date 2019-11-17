@@ -6,15 +6,13 @@ typedef struct fract {
 } Fraction;
 
 int ggT(int a, int b) {
-    if (a == 0) {
+    if (a == 0)
         return b;
-    }
     while (b != 0) {
-        if (a > b) {
+        if (a > b)
             a = a - b;
-        } else {
+        else
             b = b - a;
-        }
     }
     return a;
 }
@@ -23,7 +21,7 @@ void readFraction(Fraction *fraction) {
     printf("Dividend of your fraction: ");
     scanf("%i", &fraction->dividend);
     printf("Divisor of your fraction: ");
-    scanf("%d", &fraction->divisor);
+    scanf("%i", &fraction->divisor);
 }
 
 void printFraction(Fraction *fraction) {
@@ -31,24 +29,30 @@ void printFraction(Fraction *fraction) {
 }
 
 Fraction* addFractions(Fraction *first, Fraction *second) {
-    Fraction *sum;
-    sum->dividend = first->dividend * second->divisor + second->dividend * first->divisor;
+    Fraction sum;
+    sum.dividend = first->dividend * second->divisor + second->dividend * first->divisor;
+    sum.divisor = first->divisor * second->divisor;
 
-    sum->divisor = first->divisor * second->divisor;
+    int sDiv = ggT(sum.dividend, sum.divisor);
+    sum.dividend = sum.dividend / sDiv;
+    sum.divisor = sum.divisor / sDiv;
 
-    return sum;
+    Fraction *sumPointer = &sum;
+    return sumPointer;
 }
 
 Fraction* multiplyFractions(Fraction *first, Fraction *second) {
-    Fraction *product;
-    product->dividend = first->dividend * second->dividend;
-    product->divisor = first->divisor * second->divisor;
+    Fraction product;
+    product.dividend = first->dividend * second->dividend;
+    product.divisor = first->divisor * second->divisor;
 
-    int sDiv = ggT(product->dividend, product->divisor);
-    product->dividend = product->dividend / sDiv;
-    product->divisor = product->divisor / sDiv;
+    int sDiv = ggT(product.dividend, product.divisor);
+    product.dividend = product.dividend / sDiv;
+    product.divisor = product.divisor / sDiv;
 
-    return product;
+    Fraction *prodPointer = &product;
+
+    return prodPointer;
 
 }
 
@@ -65,8 +69,6 @@ void test() {
 
     Fraction *sum = addFractions(&first,&second);
     printFraction(sum);
-    
-    printf("%i, %i, %i, %i\n",first.dividend,first.divisor,second.dividend,second.divisor);
 
     Fraction *product = multiplyFractions(&first,&second);
     printFraction(product);
