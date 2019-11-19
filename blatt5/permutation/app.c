@@ -1,11 +1,16 @@
 #include <stdio.h>
-#include <string.h>
 #include "permutCheck.h"
 
-int main(void) {
-    printf("test\n");
-    printf("%i\n", isPermutation("hello", "lehol"));
-    //isPermutation("hello", "lehho");
+int main(void) 
+{
+    char* a = {"hello"};
+    char* b = {"lehol"};
+    char* c = {"lehho"};
+    char* d = {"horst"};
+
+    printf("%i \n", isPermutation(a, b));
+    printf("%i \n", isPermutation(a, c));
+    printf("%i \n", isPermutation(a, d));
 
     return 0;
 }
