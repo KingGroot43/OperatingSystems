@@ -1,13 +1,8 @@
 #include <stdio.h>
-
-typedef struct fract {
-    int dividend;
-    int divisor;
-} Fraction;
+#include "fractArithmetic.h"
 
 int ggT(int a, int b) {
-    if (a == 0)
-        return b;
+    if (a == 0) return b;
     while (b != 0) {
         if (a > b)
             a = a - b;
@@ -32,11 +27,9 @@ Fraction* addFractions(Fraction *first, Fraction *second) {
     Fraction sum;
     sum.dividend = first->dividend * second->divisor + second->dividend * first->divisor;
     sum.divisor = first->divisor * second->divisor;
-
     int sDiv = ggT(sum.dividend, sum.divisor);
     sum.dividend = sum.dividend / sDiv;
     sum.divisor = sum.divisor / sDiv;
-
     Fraction *sumPointer = &sum;
     return sumPointer;
 }
@@ -45,13 +38,10 @@ Fraction* multiplyFractions(Fraction *first, Fraction *second) {
     Fraction product;
     product.dividend = first->dividend * second->dividend;
     product.divisor = first->divisor * second->divisor;
-
     int sDiv = ggT(product.dividend, product.divisor);
     product.dividend = product.dividend / sDiv;
     product.divisor = product.divisor / sDiv;
-
     Fraction *prodPointer = &product;
-
     return prodPointer;
 
 }
@@ -76,7 +66,3 @@ void test() {
 }
 
 
-int main(void) {
-    test();
-
-}
