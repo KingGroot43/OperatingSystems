@@ -1,0 +1,9 @@
+#!/bin/bash
+
+logname=$LOGNAME
+notHome=$HOME
+
+fileCount=$(ls -l $HOME | grep '^-' | wc -l)
+processCount=$(ps -u $logname | wc -l)
+
+echo "Es sind $fileCount Dateien im Homeverzeichnis und es laufen $processCount Prozesse des Users $logname"

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# compress all .txt files
+gzip -c *.txt > compressed.gz
+
+# count compressed text
+gzip -cd compressed.gz | wc -c
+
+# decompress file
+gzip -d compressed.gz
+
+# get content of .txt file
+cat compressed

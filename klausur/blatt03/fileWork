@@ -1,4 +1,4 @@
 #!/bin/bash
 
 filename=$(date +%A)-passwd
-cut -d : -f 1 passwd > $filename 
+cut -d : -f 1 passwd | sort  > $filename 

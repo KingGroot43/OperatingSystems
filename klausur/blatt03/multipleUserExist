@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# User argument
+S=($@)
+file=passwd
+count=0
+
+for ((i=0; i < ${#S}; i++))
+do
+	while read line
+	do
+		if [[ ${line%%:*} == ${S[$i]} ]]
+		then
+			echo "The user ${S[$i]} exists"
+			((count+=1))
+			break
+		fi
+	done < $file
+done
+
+exit $count

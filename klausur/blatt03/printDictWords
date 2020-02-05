@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# String
+S=$1
+# Number of characters
+N=$2
+dict=american-english
+
+while read line
+do
+	if [ ${#line} -le $N ] && [[ $line == $S* ]];
+	then
+		echo $line
+	fi
+done < $dict
+
+
+

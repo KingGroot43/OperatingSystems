@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# User argument
+S=$1
+file=passwd
+
+while read line
+do
+	#user=$(echo $line | cut -d : -f 1)
+	if [ ${line%%:*} == $S ]
+	then
+		echo "The user $S exists"
+		exit 0
+	fi
+done < $file
+
+echo "The user $S doesn't exist"
+exit 1

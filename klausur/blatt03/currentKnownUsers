@@ -1,0 +1,28 @@
+#!/bin/bash
+
+file=passwd
+
+case "$1" in
+	-[lL]) who ;;
+	-[sS]) 	while read line
+		do
+			if [[ ${#2} == 0 ]]
+			then
+				echo "You have to insert a username"
+				exit 0
+			fi
+			user=$(echo $line | cut -d : -f 1)
+			if [[ $user == $2 ]]
+			then
+				echo "User $user exsist"
+				exit 0
+			fi
+		done < $file
+		;;
+	--help) echo "-l -L : Prints the current logged in user"
+		echo "-s -S [argument] : Prints the user if they are online"
+		echo "Without arguments the script prints all currently known users" ;;
+	*) cut -d : -f 1 $file
+esac
+
+exit 1
